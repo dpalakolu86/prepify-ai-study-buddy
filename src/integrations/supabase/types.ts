@@ -14,7 +14,224 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_messages: {
+        Row: {
+          content: string
+          conversation_id: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      flashcard_decks: {
+        Row: {
+          card_count: number | null
+          created_at: string
+          id: string
+          subject: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          card_count?: number | null
+          created_at?: string
+          id?: string
+          subject?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          card_count?: number | null
+          created_at?: string
+          id?: string
+          subject?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      flashcards: {
+        Row: {
+          back: string
+          created_at: string
+          deck_id: string
+          ease_factor: number | null
+          front: string
+          id: string
+          interval_days: number | null
+          next_review: string | null
+          review_count: number | null
+          user_id: string
+        }
+        Insert: {
+          back: string
+          created_at?: string
+          deck_id: string
+          ease_factor?: number | null
+          front: string
+          id?: string
+          interval_days?: number | null
+          next_review?: string | null
+          review_count?: number | null
+          user_id: string
+        }
+        Update: {
+          back?: string
+          created_at?: string
+          deck_id?: string
+          ease_factor?: number | null
+          front?: string
+          id?: string
+          interval_days?: number | null
+          next_review?: string | null
+          review_count?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "flashcards_deck_id_fkey"
+            columns: ["deck_id"]
+            isOneToOne: false
+            referencedRelation: "flashcard_decks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          streak_count: number | null
+          total_questions_answered: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          streak_count?: number | null
+          total_questions_answered?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          streak_count?: number | null
+          total_questions_answered?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      quiz_sessions: {
+        Row: {
+          completed_at: string | null
+          correct_answers: number | null
+          created_at: string
+          id: string
+          mode: string
+          score_prediction: number | null
+          subject: string
+          time_spent_seconds: number | null
+          total_questions: number | null
+          unit: string | null
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          correct_answers?: number | null
+          created_at?: string
+          id?: string
+          mode: string
+          score_prediction?: number | null
+          subject: string
+          time_spent_seconds?: number | null
+          total_questions?: number | null
+          unit?: string | null
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          correct_answers?: number | null
+          created_at?: string
+          id?: string
+          mode?: string
+          score_prediction?: number | null
+          subject?: string
+          time_spent_seconds?: number | null
+          total_questions?: number | null
+          unit?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      study_materials: {
+        Row: {
+          created_at: string
+          flashcards_generated: boolean | null
+          id: string
+          original_content: string | null
+          quiz_generated: boolean | null
+          source_type: string
+          source_url: string | null
+          summary: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          flashcards_generated?: boolean | null
+          id?: string
+          original_content?: string | null
+          quiz_generated?: boolean | null
+          source_type: string
+          source_url?: string | null
+          summary?: string | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          flashcards_generated?: boolean | null
+          id?: string
+          original_content?: string | null
+          quiz_generated?: boolean | null
+          source_type?: string
+          source_url?: string | null
+          summary?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
