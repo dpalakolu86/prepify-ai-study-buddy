@@ -23,8 +23,8 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm">Log In</Button>
-          <Button size="sm" className="bg-gradient-primary text-primary-foreground border-0 hover:opacity-90">Get Started Free</Button>
+          <Link to="/auth"><Button variant="ghost" size="sm">Log In</Button></Link>
+          <Link to="/auth"><Button size="sm" className="bg-gradient-primary text-primary-foreground border-0 hover:opacity-90">Get Started Free</Button></Link>
         </div>
 
         <button className="md:hidden" onClick={() => setOpen(!open)}>
